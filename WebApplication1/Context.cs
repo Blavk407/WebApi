@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1
 {
@@ -14,18 +13,15 @@ namespace WebApplication1
         }
 
         public DbSet<Book> Books => Set<Book>();
-    }
 
-    public class Book
-    {
-        public int Id { get; set; }
-
-        [Required, MaxLength(100)]
-        public string Name { get; set; } = string.Empty;
-
-        [Required, MaxLength(100)]
-        public string Author { get; set; } = string.Empty;
-
-        public int CountOfPages { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Book>(entity =>
+            {
+                entity.HasIndex(x => x.Author);
+                entity.HasIndex(x => x.CountOfPages);
+            });
+        }
     }
 }

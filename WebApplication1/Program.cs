@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<Context>(options =>
 {
-    options.UseSqlite("Data Source=books.db");
+    options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Database=booksdb");
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

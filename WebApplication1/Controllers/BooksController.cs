@@ -25,11 +25,49 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Book>>> Get()
+        public async Task<ActionResult<IEnumerable<Book>>> Get([FromQuery] BookFilter filter)
         {
-            var books = await _context.Books.ToListAsync();
+            Console.WriteLine(filter.Author);
+            var books = await _context.Books
+                .Where(
+                x => x.CountOfPages >= filter.MinCountOfPages && 
+                x.CountOfPages <= filter.MaxCountOfPages && (
+                string.IsNullOrEmpty(filter.Author) || x.Author == filter.Author))
+                .ToListAsync();
             return Ok(books);
         }
 
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<Book>> Delete([FromRoute] int id)
+        {
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
+                return BadRequest();
+            _context.Books.Remove(book);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<Book>> Put([FromRoute] int id, [FromBody] Book model)
+        {
+            var putBook = await _context.Books.FindAsync(id);
+            if (putBook == null)
+                return BadRequest();
+            putBook.Author = model.Author;
+            putBook.Name = model.Name;
+            putBook.CountOfPages = model.CountOfPages;
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Book>> GetBook([FromRoute] int id)
+        {
+            var book = await _context.Books.FindAsync(id);
+            if (book == null)
+                return NotFound();
+            return Ok(book);
+        }
     }
 }
