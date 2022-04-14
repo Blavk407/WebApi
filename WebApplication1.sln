@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{9A779A76-B67E-41B2-B8E8-F0CCC2C33BF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{9A779A76-B67E-41B2-B8E8-F0CCC2C33BF5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIWPF", "APIWPF\APIWPF\APIWPF.csproj", "{2D876782-EC72-477B-8C13-87F7A35CAFFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9A779A76-B67E-41B2-B8E8-F0CCC2C33BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A779A76-B67E-41B2-B8E8-F0CCC2C33BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A779A76-B67E-41B2-B8E8-F0CCC2C33BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D876782-EC72-477B-8C13-87F7A35CAFFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D876782-EC72-477B-8C13-87F7A35CAFFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D876782-EC72-477B-8C13-87F7A35CAFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D876782-EC72-477B-8C13-87F7A35CAFFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

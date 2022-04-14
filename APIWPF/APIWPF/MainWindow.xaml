@@ -1,0 +1,40 @@
+﻿<Window x:Class="APIWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:APIWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <MediaElement Panel.ZIndex="2" x:Name="LoadingMediaElement" Source="load.gif" LoadedBehavior="Manual"></MediaElement>
+        <Grid x:Name="AllContentGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="BooksListview" MouseUp="BooksListview_SelectionChanged"></ListView>
+            <StackPanel Grid.Column="1">
+                <TextBlock>Поиск по автору</TextBlock>
+                <TextBox x:Name="AuthorTextbox" TextChanged="AuthorTextbox_TextChanged"></TextBox>
+                <StackPanel Margin="25">
+                    <Button x:Name="Unselect" Content="Unselect" Click="Unselect_Click"/>
+                    <TextBlock>Книга</TextBlock>
+                    <TextBlock Margin="5" FontSize="14" Foreground="#584356">Название</TextBlock>
+                    <TextBox x:Name="NewNameTextbox" Margin="5,0,0,0" Width="250" HorizontalAlignment="Left"></TextBox>
+                    <TextBlock Margin="5" FontSize="14" Foreground="#584356">Автор</TextBlock>
+                    <TextBox x:Name="NewAuthorTextbox" Margin="5,0,0,0" Width="250" HorizontalAlignment="Left"></TextBox>
+                    <TextBlock Margin="5" FontSize="14" Foreground="#584356">Количество страниц</TextBlock>
+                    <TextBox x:Name="NewCountOfPagesTextbox" Margin="5,0,0,0" Width="250" HorizontalAlignment="Left"></TextBox>
+                    <Button Margin="0,10,0,0" FontSize="16" x:Name="AddBookButton" Width="270" HorizontalAlignment="Left" Click="AddBookButton_Click">Сохранить</Button>
+                </StackPanel>
+                <Button Margin="0,10,0,0" FontSize="16" x:Name="DeleteBookButton" Click="DeleteBookButton_Click">Удалить книгу</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
